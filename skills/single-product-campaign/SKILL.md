@@ -1,63 +1,44 @@
----
-name: single-product-campaign
-description: "SKILL __Single Product Campaign at Scale__ — Launch a full Meta Ads campaign with individual ads for each product. Create 100+ ads in minutes instead of hours — just provide product URLs and images. Use this skill whenever the user mentions: 'campagna prodotti', 'single product ads', 'un ad per prodotto', 'lancia prodotti', 'crea ads da URL', 'product campaign', 'catalogo manuale', 'ads from product pages', 'bulk ads', 'crea 50 ads', 'crea 100 ads', 'ogni prodotto un ad', or any request to create multiple ads from a list of product URLs with images."
----
+# Single Product Campaign Manager
 
-# Single Product Campaign at Scale
+Gestisci le campagne Meta Ads dove ogni prodotto ha la sua inserzione dedicata. Aggiungi nuovi prodotti, spegni quelli che non performano, redistribuisci le ad tra gli adset — tutto da Claude Code con Pipeboard.
 
-Launch a full Meta Ads campaign with individual ads for each product. Create 100+ ads in minutes instead of hours — just provide product URLs and images.
+## A chi serve
 
-## When to use
+Hai un e-commerce e sponsorizzi i tuoi prodotti con Meta Ads? Probabilmente hai (o vuoi avere) campagne dove ogni prodotto ha la sua ad dedicata: una foto, il nome, il prezzo, un link diretto alla pagina prodotto. Questo tipo di campagne ti permette di capire esattamente quali prodotti vendono e quali no, spegnere quelli che non convertono e aggiungere nuovi arrivi subito.
 
-You have a list of products and want to create a campaign where each product gets its own ad with:
+Questa skill automatizza tutto il processo: dall'aggiunta di nuovi prodotti alla distribuzione nelle campagne, fino allo spegnimento delle ad che non funzionano.
 
-- Single product image
-- Price + product name as headline (extracted automatically from the product page)
-- Generic brand copy as primary text
-- Custom description (e.g. "Free shipping 24/48h")
-- SHOP_NOW CTA
-- All Advantage+ creative features enabled (including Show Products / product_extensions)
-- Pixel tracking for purchases
+## Come funzionano le campagne prodotti singoli
 
-## What I need from you
+Sono campagne Meta Ads (obiettivo Sales) in cui ogni inserzione promuove un singolo prodotto con:
+- Una foto del prodotto
+- Il prezzo e il nome come titolo (es. "€34,90 - Abito Sophie")
+- Un copy generico del brand come testo principale
+- Una description breve (es. "Spedizione gratuita 24/48h")
+- CTA "Acquista ora" con link diretto alla pagina prodotto
 
-1. **Account**: Which ad account to use (I'll look up page, Instagram, and pixel automatically)
-2. **Products**: For each product provide:
-   - Product page URL
-   - Image (local file or URL)
-3. **Primary text**: The generic ad copy (same for all ads)
-4. **Description**: Text shown below the headline (e.g. "Free shipping 24/48h")
-5. **Targeting**: Country, gender, age range
-6. **Daily budget**: In account currency
-7. **Product set ID**: The catalog product set for Show Products (I can help you find it)
+A differenza delle campagne con catalogo dinamico, qui ogni ad è creata manualmente. Il vantaggio è il controllo totale: sai esattamente quale prodotto performa, puoi spegnere i flop e aggiungere nuovi arrivi subito.
 
-## What I'll do
+Di solito si creano più campagne di questo tipo, ognuna con più adset (gruppi di inserzioni), e in ogni adset si mette un massimo di N ad per non diluire troppo il budget.
 
-1. Fetch account details (page_id, instagram_id, pixel_id)
-2. Visit each product URL to extract product name and price automatically
-3. Upload all product images to Meta in parallel
-4. Create one OUTCOME_SALES campaign (Lowest Cost, Auction)
-5. Create one ad set with your targeting, pixel tracking (Purchase), product_set_id, and DSA compliance
-6. For each product, create a creative with:
-   - Your product image
-   - Headline: "€{price} - {product_name}" (auto-extracted)
-   - All Advantage+ features enabled including product_extensions (Show Products)
-7. Create one ad per product with pixel tracking
-8. Everything is created in PAUSED status — you review and activate when ready
+## Cosa puoi fare
 
-## Example
+- **Aggiungere prodotti** — dai le URL del tuo sito, il resto è automatico (immagini, nome, prezzo estratti dalla pagina)
+- **Spegnere ad** — manda uno screenshot dal Business Manager con le ad evidenziate, oppure chiedi un recap performance e decidi
+- **Vedere come vanno** — recap per campagna, adset o singola ad con CPA, ROAS, spesa
+- **Riorganizzare** — redistribuire le ad tra gli adset quando serve
 
-```
-Account: act_123456789
-Primary text: "Discover our outlet — up to 80% off. Dress well, pay less."
-Description: "Free shipping 24/48h"
-Targeting: Italy, men, 18-65
-Budget: €70/day
-Product set: 654849950452874
-Products:
-1. https://mystore.com/product-1 → image1.jpg
-2. https://mystore.com/product-2 → image2.jpg
-3. https://mystore.com/product-3 → image3.jpg
-```
+## Come iniziare
 
-I'll automatically extract each product's name and price from the URLs, upload the images, and create all ads.
+1. Assicurati di avere [Pipeboard](https://pipeboard.co) configurato come MCP in Claude Code
+2. Copia la cartella `single-product-campaign` sul tuo computer
+3. Apri Claude Code nella cartella
+4. Scrivi: **"Configuriamo il mio account"**
+
+Claude ti guiderà con un questionario per configurare tutto. Dopo il setup, sei operativo.
+
+## Requisiti
+
+- Account Pipeboard con accesso al tuo account Meta Ads
+- Un sito e-commerce con pagine prodotto accessibili (Shopify, WooCommerce, ecc.)
+- Almeno una campagna Meta Ads attiva con obiettivo Sales (oppure la creiamo insieme)
