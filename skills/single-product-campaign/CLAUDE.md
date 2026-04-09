@@ -134,6 +134,12 @@ When the user already has the `account-config.md` file, you're in operational mo
 [{"action.type": ["offsite_conversion"], "fb_pixel": ["{pixel_id}"]}]
 ```
 
+## Budget rules
+
+- If you create a campaign with `daily_budget` (CBO), do NOT set `daily_budget` on ad sets — they inherit the campaign budget automatically
+- If you need per-adset budgets (ABO), create the campaign WITHOUT `daily_budget` and set it on each ad set instead
+- Meta only allows budget at ONE level: campaign OR ad set, never both
+
 ## Known Pipeboard workarounds
 
 - `get_instagram_accounts` may return 0 even with IG connected — extract the ID from an existing creative using `get_creative_details`
